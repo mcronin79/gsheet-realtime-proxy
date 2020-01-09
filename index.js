@@ -80,14 +80,15 @@ const pushDataToClient = function pushDataToClient(data) {
 const getAndPushData = async function getAndPushData(sheetKey) {
   try {
     const newData = await getSheetData(sheetKey);
-    const cleanData = await cleanSheetData(newData);
+    winston.log('info', newData);
+    //const cleanData = await cleanSheetData(newData);
 
     // TODO: Fix the weird double negative here
-    const dataUnchanged = deepEqual(oldData, cleanData);
+    const dataUnchanged = deepEqual(oldData, newData);
     if (!dataUnchanged) {
       winston.log('info', 'Data changed');
-      pushDataToClient(cleanData);
-      oldData = cleanData;
+      pushDataToClient(newData);
+      oldData = newData;
     } else {
       winston.log('info', 'Data unchanged');
       return;

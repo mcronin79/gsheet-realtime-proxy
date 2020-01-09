@@ -17,12 +17,12 @@ app.set('port', (process.env.PORT || 3000));
 const getSheetData = async function getSheetData(sheetKey) {
   try {
     const workbookObject = await getWorkbook(sheetKey);
-    winston.log('workbookObject', workbookObject);
+    winston.log('info', 'workbookObject' + workbookObject);
     
     const sheetIds = workbookObject.sheets.map((sheetObject) => {
       return sheetObject.id;
     });
-    winston.log('sheetIds', sheetIds);
+    winston.log('info', 'sheetIds' + sheetIds);
 
     // aggregatedData becomes an array of promises because it's async
     // which is necessary to call the async getSheet function within it
@@ -30,7 +30,7 @@ const getSheetData = async function getSheetData(sheetKey) {
       const sheetData = await getSheet(sheetKey, sheetId);
       return sheetData;
     })
-    winston.log('aggregatedData', aggregatedData);
+    winston.log('info', 'aggregatedData' + aggregatedData);
 
     // We then use Promise.all to return when all the child promises have resolved
     return Promise.all(aggregatedData)
@@ -104,8 +104,8 @@ const getAndPushData = async function getAndPushData(sheetKey) {
 setInterval(() => {
   try {
     const sheetKey = urlToKey(sheetURL);
-    winston.log('sheetURL', sheetURL);
-    winston.log('sheetKey', sheetKey);
+    winston.log('info', 'sheetURL' + sheetURL);
+    winston.log('info', sheetKey);
     getAndPushData(sheetKey);
   } catch (e) {
     throw (e);

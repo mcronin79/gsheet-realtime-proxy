@@ -38,12 +38,12 @@ const getSheetData = async function getSheetData(sheetKey) {
     
     winston.log('info', 'getSheetData start 2');
     const workbookObject = await getWorkbook(sheetKey);
-    winston.log('info', 'workbookObject' + workbookObject);
+    winston.log('info', 'workbookObject ' + workbookObject.name);
     
     const sheetIds = workbookObject.sheets.map((sheetObject) => {
       return sheetObject.id;
     });
-    winston.log('info', 'sheetIds' + sheetIds);
+    winston.log('info', 'sheetIds ' + sheetIds);
 
     // aggregatedData becomes an array of promises because it's async
     // which is necessary to call the async getSheet function within it
@@ -51,7 +51,7 @@ const getSheetData = async function getSheetData(sheetKey) {
       const sheetData = await getSheet(sheetKey, sheetId);
       return sheetData;
     })
-    winston.log('info', 'aggregatedData' + aggregatedData);
+    winston.log('info', 'aggregatedData ' + aggregatedData);
 
     // We then use Promise.all to return when all the child promises have resolved
     return Promise.all(aggregatedData)
@@ -105,14 +105,14 @@ const getAndPushData = async function getAndPushData(sheetKey) {
   try {
     const newData = await getSheetData(sheetKey);
     winston.log('info', newData);
-    //const cleanData = await cleanSheetData(newData);
+    const cleanData = await cleanSheetData(newData);
 
     // TODO: Fix the weird double negative here
-    const dataUnchanged = deepEqual(oldData, newData);
+    const dataUnchanged = deepEqual(oldData, cleanData);
     if (!dataUnchanged) {
       winston.log('info', 'Data changed');
-      pushDataToClient(newData);
-      oldData = newData;
+      pushDataToClient(cleanData);
+      oldData = cleanData;
     } else {
       winston.log('info', 'Data unchanged');
       return;

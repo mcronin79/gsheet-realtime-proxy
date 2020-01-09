@@ -4,7 +4,7 @@ const io = require('socket.io')(http);
 const deepEqual = require('fast-deep-equal');
 const winston = require('winston')
 const sheetsy = require('sheetsy');
-const { urlToKey, getWorkbook, getSheet } = sheetsy;
+const { getWorkbook, getSheet } = sheetsy;
 
 const sheetURL = process.env.GSHEET_URL;
 const defaultRefreshInterval = 30000;
@@ -14,6 +14,21 @@ var oldData = {};
 
 app.set('port', (process.env.PORT || 3000));
 
+urlToKey(url) {
+		return firstCapture(/key=(.*?)(&|#|$)/, url)
+			|| firstCapture(/d\/(.*?)\/pubhtml/, url)
+			|| firstCapture(/spreadsheets\/d\/(.*?)\//, url)
+			|| toss(`No key found in ${ url }`)
+	}
+
+const firstCapture = (regex, str) => {
+	const match = regex.exec(str)
+	return match && match[1]
+}
+
+const toss = message => {
+    winston.log('info', 'message ' + message);
+}
 const getSheetData = async function getSheetData(sheetKey) {
   try {
     winston.log('info', 'getSheetData start');

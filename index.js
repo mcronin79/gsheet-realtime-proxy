@@ -16,6 +16,7 @@ app.set('port', (process.env.PORT || 3000));
 
 const getSheetData = async function getSheetData(sheetKey) {
   try {
+    winston.log('info', 'getSheetData start');
     const workbookObject = await getWorkbook(sheetKey);
     winston.log('info', 'workbookObject' + workbookObject);
     

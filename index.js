@@ -16,8 +16,8 @@ app.set('port', (process.env.PORT || 3000));
 
 const urlToKey = (url) => {
 		return firstCapture(/key=(.*?)(&|#|$)/, url)
-			|| firstCapture(/d\/(.*?)\/pubhtml/, url)
-			|| firstCapture(/spreadsheets\/d\/(.*?)\//, url)
+			|| firstCapture(/d\/e\/(.*?)\/pubhtml/, url)
+			|| firstCapture(/spreadsheets\/d\/e\/(.*?)\//, url)
 			|| toss(`No key found in ${ url }`)
 	}
 
@@ -144,7 +144,7 @@ setInterval(() => {
     winston.log('info', 'sheetURL ' + sheetURL);
     winston.log('info', 'sheetKey ' + sheetKey);
     winston.log('info', 'key ' + key);
-    getAndPushData(key);
+    getAndPushData(sheetKey);
   } catch (e) {
     throw (e);
   };

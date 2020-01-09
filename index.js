@@ -14,7 +14,7 @@ var oldData = {};
 
 app.set('port', (process.env.PORT || 3000));
 
-urlToKey(url) {
+const urlToKey = (url) => {
 		return firstCapture(/key=(.*?)(&|#|$)/, url)
 			|| firstCapture(/d\/(.*?)\/pubhtml/, url)
 			|| firstCapture(/spreadsheets\/d\/(.*?)\//, url)

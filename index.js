@@ -17,6 +17,26 @@ app.set('port', (process.env.PORT || 3000));
 const getSheetData = async function getSheetData(sheetKey) {
   try {
     winston.log('info', 'getSheetData start');
+    getWorkbook(sheetKey).then(workbook => {
+	    const firstRow = sheet.rows[0]
+      const wbName = workbook.name 
+      winston.log('info', 'wbName ' + wbName);// => {
+//		name: 'Sheetsy test',
+//		authors: [
+//			{
+//				name: 'joshduffman',
+//				email: 'joshduffman@gmail.com',
+//			}
+//		],
+//		updated: '2017-07-14T04:59:24.123Z',
+//		sheets: [
+//			{ name: 'Herp', id: 'od6', updated: '2017-07-14T04:59:24.123Z' },
+//			{ name: 'Derp', id: 'of6b9b5', updated: '2017-07-14T04:59:24.123Z' }
+//		]
+//	}
+});
+    
+    winston.log('info', 'getSheetData start 2');
     const workbookObject = await getWorkbook(sheetKey);
     winston.log('info', 'workbookObject' + workbookObject);
     
@@ -105,9 +125,11 @@ const getAndPushData = async function getAndPushData(sheetKey) {
 setInterval(() => {
   try {
     const sheetKey = urlToKey(sheetURL);
-    winston.log('info', 'sheetURL' + sheetURL);
-    winston.log('info', sheetKey);
-    getAndPushData(sheetKey);
+    const key = urlToKey('https://docs.google.com/spreadsheets/d/14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs/pubhtml');
+    winston.log('info', 'sheetURL ' + sheetURL);
+    winston.log('info', 'sheetKey ' + sheetKey);
+    winston.log('info', 'key ' + key);
+    getAndPushData(key);
   } catch (e) {
     throw (e);
   };

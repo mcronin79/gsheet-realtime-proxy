@@ -63,7 +63,7 @@ const getSheetData = async function getSheetData(sheetKey) {
     // aggregatedData becomes an array of promises because it's async
     // which is necessary to call the async getSheet function within it
     const aggregatedData = sheetIds.map(async (sheetId) => {
-      const sheetData = await getSheet(sheetKey, sheetId);
+      const sheetData = await getSheet('14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs', sheetId);
       return sheetData;
     })
     winston.log('info', 'aggregatedData ' + aggregatedData);

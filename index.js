@@ -145,7 +145,7 @@ setInterval(() => {
     //const key = urlToKey('https://docs.google.com/spreadsheets/d/14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs/pubhtml');
     winston.log('info', 'sheetURL ' + sheetURL);
     winston.log('info', 'sheetKey ' + sheetKey);
-    winston.log('info', 'key ' + key);
+    //winston.log('info', 'key ' + key);
     getAndPushData(sheetKey);
   } catch (e) {
     throw (e);

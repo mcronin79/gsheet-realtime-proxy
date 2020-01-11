@@ -11,11 +11,25 @@
   },
   "author": "Max Hall",
   "license": "ISC",
+  "devDependencies": {
+    "babel-plugin-external-helpers": "6.22.0",
+    "babel-preset-env": "^1.7.0",
+    "basic-xhr": "~1.0.0",
+    "browserify": "16.2.3",
+    "rollup": "0.54.1",
+    "rollup-plugin-babel": "2.7.1",
+    "rollup-plugin-commonjs": "8.3.0",
+    "rollup-plugin-node-resolve": "3.0.0",
+    "tape": "4.7.0",
+    "tape-run": "4.0.0"
+  },
   "dependencies": {
     "express": "^4.15.4",
     "fast-deep-equal": "^1.0.0",
     "sheetsy": "^2.1.1",
     "socket.io": "^2.0.3",
-    "winston": "^2.3.1"
+    "winston": "^2.3.1",
+    "got": "7.1.0",
+    "ordered-entries": "1.0.0"
   }
 }

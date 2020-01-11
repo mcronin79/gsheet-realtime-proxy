@@ -3,8 +3,8 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const deepEqual = require('fast-deep-equal');
 const winston = require('winston')
-const sheetsy = require('sheetsy');
-const { getWorkbook, getSheet } = sheetsy;
+//const sheetsy = require('sheetsy');
+const { getWorkbook, getSheet } = require(`./sheetsy.js`);
 
 const sheetURL = process.env.GSHEET_URL;
 const defaultRefreshInterval = 30000;

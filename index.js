@@ -34,10 +34,10 @@ const getSheetData = async function getSheetData(sheetKey) {
     winston.log('info', 'getSheetData start');
     //2PACX-1vR7WSkWAMn-MpPTkmlkO61t9v-dfAmBJ83O7jmZ7Ex69WT1US9CTpjDrHt_DVBEGr6gwKO7gb5ETZ6G
     //14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs
-    getWorkbook('14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs').then(workbook => {
-	    const firstRow = sheet.rows[0]
-      const wbName = workbook.name 
-      winston.log('info', 'wbName ' + wbName);// => {
+    //getWorkbook('14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs').then(workbook => {
+	//    const firstRow = sheet.rows[0]
+      //const wbName = workbook.name 
+      //winston.log('info', 'wbName ' + wbName);// => {
 //		name: 'Sheetsy test',
 //		authors: [
 //			{
@@ -54,20 +54,23 @@ const getSheetData = async function getSheetData(sheetKey) {
 });
     
     winston.log('info', 'getSheetData start 2');
-    const workbookObject = await getWorkbook('14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs');
-    winston.log('info', 'workbookObject ' + workbookObject.name);
+    //const workbookObject = await getWorkbook('14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs');
+    //winston.log('info', 'workbookObject ' + workbookObject.name);
     
-    const sheetIds = workbookObject.sheets.map((sheetObject) => {
-      return sheetObject.id;
-    });
-    winston.log('info', 'sheetIds ' + sheetIds);
+    //const sheetIds = workbookObject.sheets.map((sheetObject) => {
+    //  return sheetObject.id;
+    //});
+    //winston.log('info', 'sheetIds ' + sheetIds);
 
-    // aggregatedData becomes an array of promises because it's async
-    // which is necessary to call the async getSheet function within it
-    const aggregatedData = sheetIds.map(async (sheetId) => {
-      const sheetData = await getSheet('14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs', sheetId);
-      return sheetData;
-    })
+    // aggregatedData becomes an array of promises because it's async    
+// which is necessary to call the async getSheet function within it
+    
+const aggregatedData = await getSheet('14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs', 'abc');
+
+//    const aggregatedData = sheetIds.map(async (sheetId) => {
+//      const sheetData = await getSheet('14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs', sheetId);
+//      return sheetData;
+//    })
     winston.log('info', 'aggregatedData ' + aggregatedData);
 
     // We then use Promise.all to return when all the child promises have resolved

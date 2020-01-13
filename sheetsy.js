@@ -1,6 +1,7 @@
 const { buildIndexUrl, buildSheetUrl } = require(`./url-builder.js`)
 const entries = require(`ordered-entries`)
 const got = require(`got`)
+const winston = require('winston')
 
 const defaultGet = url => got(url).then(response => JSON.parse(response.body))
 
@@ -29,6 +30,9 @@ let getSheet = (key, id, get = defaultGet) => {
 	return get(buildSheetUrl(key, id)).then(sheetData => {
 		//const range = sheetData.range
 		const rows = sheetData.values
+		rows.map((row) => {
+        		winston.log(`${row[0]}, ${row[4]}`);
+      		});
 		//const rows = (feed.entry || []).map(entry => {
 			//const originalCellKeysAndValues = entries(entry)
 			//	.filter(([ key ]) => /^gsx\$/.test(key))

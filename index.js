@@ -76,7 +76,8 @@ const aggregatedData = await getSheet('14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ew
     winston.log('info', 'aggregatedData ' + JSON.stringify(aggregatedData));
 
     // We then use Promise.all to return when all the child promises have resolved
-    return Promise.all(aggregatedData)
+    //return Promise.all(aggregatedData)
+    return aggregatedData;
   } catch (e) {
     winston.log('error', e);
   }

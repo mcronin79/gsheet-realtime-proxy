@@ -51,7 +51,7 @@ const getSheetData = async function getSheetData(sheetKey) {
 //			{ name: 'Derp', id: 'of6b9b5', updated: '2017-07-14T04:59:24.123Z' }
 //		]
 //	}
-});
+//});
     
     winston.log('info', 'getSheetData start 2');
     //const workbookObject = await getWorkbook('14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs');

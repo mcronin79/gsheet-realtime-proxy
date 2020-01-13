@@ -66,7 +66,9 @@ const getSheetData = async function getSheetData(sheetKey) {
 // which is necessary to call the async getSheet function within it
     
 const aggregatedData = await getSheet('14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs', 'abc');
-
+aggregatedData.map((row) => {
+        winston.log(`${row[0]}, ${row[4]}`);
+      });
 //    const aggregatedData = sheetIds.map(async (sheetId) => {
 //      const sheetData = await getSheet('14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs', sheetId);
 //      return sheetData;

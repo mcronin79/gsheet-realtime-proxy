@@ -29,7 +29,11 @@ let getWorkbook = (key, get = defaultGet) => {
 let getSheet = (key, id, get = defaultGet) => {
 	return get(buildSheetUrl(key, id)).then(sheetData => {
 		//const range = sheetData.range
+		
 		const rows = sheetData.values
+		var results = [];
+    		for(var i in rows)
+    			results.push([i, rows [i]]);
 		rows.map((row) => {
         		winston.log(`${row[0]}, ${row[4]}`);
       		});
@@ -52,7 +56,7 @@ let getSheet = (key, id, get = defaultGet) => {
 			//name: textOf(feed.title),
 			//updated: textOf(feed.updated),
 			//authors: getAuthors(feed),
-			rows,
+			results,
 		}
 	})
 }

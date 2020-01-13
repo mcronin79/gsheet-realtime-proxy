@@ -134,6 +134,8 @@ const getAndPushData = async function getAndPushData(sheetKey) {
     // TODO: Fix the weird double negative here
     const dataUnchanged = deepEqual(oldData, newData);
     if (!dataUnchanged) {
+     winston.log('info', 'start_ ' + newData);
+     winston.log('info', 'end_ ');
      winston.log('info', 'oldData: ' + oldData.length + 'newData: ' + newData.length);
      var oldDataEntries = Object.keys(oldData).length;
      var newDataEntries = Object.keys(newData).length;

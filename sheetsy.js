@@ -27,26 +27,27 @@ let getWorkbook = (key, get = defaultGet) => {
 
 let getSheet = (key, id, get = defaultGet) => {
 	return get(buildSheetUrl(key, id)).then(sheetData => {
-		const feed = sheetData.feed
-		const rows = (feed.entry || []).map(entry => {
-			const originalCellKeysAndValues = entries(entry)
-				.filter(([ key ]) => /^gsx\$/.test(key))
-				.map(([ key, value ]) => ({
-					key: key.replace(`gsx$`, ``),
-					value: textOf(value),
-				}))
-			const array = originalCellKeysAndValues.map(({ value }) => value)
-			originalCellKeysAndValues
-				.filter(({ key }) => /^[^_]/.test(key))
-				.forEach(({ key, value }) => {
-					array[key] = value
-				})
-			return array
-		})
+		//const range = sheetData.range
+		const rows = sheetData.values
+		//const rows = (feed.entry || []).map(entry => {
+			//const originalCellKeysAndValues = entries(entry)
+			//	.filter(([ key ]) => /^gsx\$/.test(key))
+			//	.map(([ key, value ]) => ({
+			//		key: key.replace(`gsx$`, ``),
+			//		value: textOf(value),
+			//	}))
+			//const array = originalCellKeysAndValues.map(({ value }) => value)
+			//originalCellKeysAndValues
+			//	.filter(({ key }) => /^[^_]/.test(key))
+			//	.forEach(({ key, value }) => {
+			//		array[key] = value
+			//	})
+			//return feed
+		//})
 		return {
-			name: textOf(feed.title),
-			updated: textOf(feed.updated),
-			authors: getAuthors(feed),
+			//name: textOf(feed.title),
+			//updated: textOf(feed.updated),
+			//authors: getAuthors(feed),
 			rows,
 		}
 	})

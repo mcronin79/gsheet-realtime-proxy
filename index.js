@@ -73,7 +73,8 @@ const aggregatedData = await getSheet('14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ew
 //      const sheetData = await getSheet('14uk6kljx-tpGJeObmi22DkAyVRFK5Z1qKmSXy1ewuHs', sheetId);
 //      return sheetData;
 //    })
-    winston.log('info', 'aggregatedData ' + JSON.stringify(aggregatedData));
+
+//  winston.log('info', 'aggregatedData ' + JSON.stringify(aggregatedData));
 
     // We then use Promise.all to return when all the child promises have resolved
     //return Promise.all(aggregatedData)
@@ -127,12 +128,15 @@ const pushDataToClient = function pushDataToClient(data) {
 const getAndPushData = async function getAndPushData(sheetKey) {
   try {
     const newData = await getSheetData(sheetKey);
-    winston.log('info', newData);
+    //winston.log('info', newData);
     //const cleanData = await cleanSheetData(newData);
 
     // TODO: Fix the weird double negative here
     const dataUnchanged = deepEqual(oldData, newData);
     if (!dataUnchanged) {
+     var oldDataEntries = Object.keys(oldData).length;
+     var newDataEntries = Object.keys(newData).length;
+     winston.log('info', 'oldDataEntries: ' + oldDataEntries + 'newDataEntries: ' + newDataEntries);
       winston.log('info', 'Data changed');
       pushDataToClient(newData);
       oldData = newData;

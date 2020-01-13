@@ -136,6 +136,11 @@ const getAndPushData = async function getAndPushData(sheetKey) {
     if (!dataUnchanged) {
      var oldDataEntries = Object.keys(oldData).length;
      var newDataEntries = Object.keys(newData).length;
+     var oldResults = JSON.parse(oldData)['oldResults'];
+     var newResults = JSON.parse(newData)['newResults'];
+
+
+     winston.log('info', 'oldResults: ' + oldResults.length + 'newResults: ' + newResults.length);
      winston.log('info', 'oldDataEntries: ' + oldDataEntries + 'newDataEntries: ' + newDataEntries);
       winston.log('info', 'Data changed');
       pushDataToClient(newData);

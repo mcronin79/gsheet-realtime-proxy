@@ -163,7 +163,7 @@ const getAndPushData = async function getAndPushData(sheetKey) {
      for (i = lenOldData; i <= lenNewData - 1; i++) {
   	dataToPush.push(newData.results[i]);
      }
-     winston.log('info', 'dataToPush: ' + dataToPush.results.length);
+     winston.log('info', 'dataToPush: ' + dataToPush.length);
       winston.log('info', 'Data changed');
       pushDataToClient(dataToPush);
       oldData = newData;

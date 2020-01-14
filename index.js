@@ -146,8 +146,12 @@ const getAndPushData = async function getAndPushData(sheetKey) {
 	    
      winston.log('info', 'isArray B: ' + isArray);
      winston.log('info', 'isArray C: ' + typeof arr3);
-
-     winston.log('info', 'newData: ' + newData.results.length);
+     var len = newData.results.length;
+     winston.log('info', 'newData: ' + len);
+	    
+     winston.log('info', 'newData First: ' + newData.results[0]);
+     winston.log('info', 'newData First: ' + newData.results[1]);
+     winston.log('info', 'newData Last: ' + newData.results[len -1]);
      //var oldDataEntries = Object.keys(oldData).length;
      var newDataEntries = Object.keys(newData).length;
      //var oldResults = oldData['oldResults'];

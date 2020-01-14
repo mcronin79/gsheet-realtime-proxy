@@ -141,10 +141,10 @@ const getAndPushData = async function getAndPushData(sheetKey) {
      //winston.log('info', 'arr2: ' + arr2.length);
 	    
      var arr3 = oldData.results;
-     
-     winston.log('info', 'arr3 A: ' + arr3[0]);
+     var isArray = Array.isArray(oldData); 
+     winston.log('info', 'arr3 A: ' + arr3);
 	    
-     winston.log('info', 'arr3 B: ' + arr3[1]);
+     winston.log('info', 'isArray B: ' + isArray);
 
      winston.log('info', 'oldData: ' + oldData.results.length + 'newData: ' + newData.results.length);
      var oldDataEntries = Object.keys(oldData).length;

@@ -155,7 +155,7 @@ const getAndPushData = async function getAndPushData(sheetKey) {
 	    
      var dataToPush =  [];
      var lenOldData = 0;
-     if (oldData != null) {
+     if (!Object.keys(oldData).length) {
  	lenOldData = oldData.results.length;
         winston.log('info', 'lenOldData: ' + lenOldData);
      }

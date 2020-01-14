@@ -146,28 +146,25 @@ const getAndPushData = async function getAndPushData(sheetKey) {
 	    
      winston.log('info', 'isArray B: ' + isArray);
      winston.log('info', 'isArray C: ' + typeof arr3);
-     var len = newData.results.length;
-     winston.log('info', 'newData: ' + len);
+     var lenNewData = newData.results.length;
+     winston.log('info', 'newData: ' + lenNewData);
 	    
      winston.log('info', 'newData First: ' + newData.results[0]);
      winston.log('info', 'newData First: ' + newData.results[1]);
      winston.log('info', 'newData Last: ' + newData.results[len -1]);
-     //var oldDataEntries = Object.keys(oldData).length;
-     var newDataEntries = Object.keys(newData).length;
-     //var oldResults = oldData['oldResults'];
-     //var newResults = newData['newResults'];
-    var oldResults = [];
-    //for(var i in oldData)
-    //	oldResults.push([i, oldData [i]]);
-
-    var newResults = [];
-    for(var i in newData)
-    	newResults.push([i, newData [i]]);
 	    
-     winston.log('info', 'newResults: ' + newResults.length);
-     winston.log('info', 'newDataEntries: ' + newDataEntries);
+     var dataToPush =  [];
+     var lenOldData = 0;
+     if (lenOldData != null) {
+ 	lenOldData = oldData.results.length;
+     }
+	    
+     for (i = lenOldData; i < lenNewData; i++) {
+  	dataToPush.push(newData.results[i]);
+     }
+     winston.log('info', 'dataToPush: ' + dataToPush.results.length);
       winston.log('info', 'Data changed');
-      pushDataToClient(newData);
+      pushDataToClient(dataToPush);
       oldData = newData;
     } else {
       winston.log('info', 'Data unchanged');

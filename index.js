@@ -142,7 +142,7 @@ const getAndPushData = async function getAndPushData(sheetKey) {
 	    
      var arr3 = newData.results;
      var isArray = Array.isArray(newData); 
-     winston.log('info', 'arr3 A: ' + JSON.stringify(arr3));
+     //winston.log('info', 'arr3 A: ' + JSON.stringify(arr3));
 	    
      winston.log('info', 'isArray B: ' + isArray);
      winston.log('info', 'isArray C: ' + typeof arr3);
@@ -151,15 +151,16 @@ const getAndPushData = async function getAndPushData(sheetKey) {
 	    
      winston.log('info', 'newData First: ' + newData.results[0]);
      winston.log('info', 'newData First: ' + newData.results[1]);
-     winston.log('info', 'newData Last: ' + newData.results[len -1]);
+     winston.log('info', 'newData Last: ' + newData.results[lenNewData - 1]);
 	    
      var dataToPush =  [];
      var lenOldData = 0;
      if (lenOldData != null) {
  	lenOldData = oldData.results.length;
+        winston.log('info', 'lenOldData: ' + lenOldData);
      }
 	    
-     for (i = lenOldData; i < lenNewData; i++) {
+     for (i = lenOldData; i <= lenNewData - 1; i++) {
   	dataToPush.push(newData.results[i]);
      }
      winston.log('info', 'dataToPush: ' + dataToPush.results.length);

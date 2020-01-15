@@ -32,8 +32,11 @@ let getSheet = (key, id, get = defaultGet) => {
 		
 		const rows = sheetData.values
 		var results = [];
+		//results.push(rows [i]);    			
+		//results.push([i, rows [i]]);
+
     		for(var i in rows)
-    			results.push([i, rows [i]]);
+    			results.push(rows [i]);
 		rows.map((row) => {
         		winston.log(`${row[0]}, ${row[4]}`);
       		});

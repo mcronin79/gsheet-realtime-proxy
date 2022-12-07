@@ -24,7 +24,7 @@
     "tape-run": "4.0.0"
   },
   "dependencies": {
-    "express": "^4.15.4",
+    "express": "^4.17.3",
     "fast-deep-equal": "^1.0.0",
     "sheetsy": "^2.1.1",
     "socket.io": "^2.0.3",
